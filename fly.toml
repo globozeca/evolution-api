@@ -1,0 +1,35 @@
+app = "seu-evolution-app"
+primary_region = "fra"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  SERVER_TYPE = "http"
+  SERVER_PORT = "8080"
+  CORS_ORIGIN = "*"
+  CORS_METHODS = "GET,POST,PUT,DELETE"
+  CORS_CREDENTIALS = "true"
+  LOG_LEVEL = "ERROR"
+  LOG_COLOR = "true"
+  LOG_BAILEYS = "error"
+  DEL_INSTANCE = "false"
+  QRCODE_LIMIT = "30"
+  QRCODE_COLOR = "#198754"
+  CONFIG_SESSION_PHONE_CLIENT = "Evolution API"
+  CONFIG_SESSION_PHONE_NAME = "Chrome"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
+
+[processes]
+  app = "npm run start:prod"
